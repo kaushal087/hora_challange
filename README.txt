@@ -35,3 +35,6 @@ Language, framework and libraries used:
 Github Link:
     https://github.com/kaushal087/hora_challange
 
+
+If you are cloning or copying code use develop branch
+
