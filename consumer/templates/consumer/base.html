@@ -43,7 +43,7 @@
      id="mainNav">
     <div class="container">
         <a class="navbar-brand js-scroll-trigger"
-           href="#page-top">Hora-Service</a>
+           href="#page-top">Hora Service</a>
         <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded"
                 type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -51,29 +51,32 @@
             Menu
             <i class="fa fa-bars"></i>
         </button>
-{#        <div class="collapse navbar-collapse" id="navbarResponsive">#}
-{#            <ul class="navbar-nav ml-auto">#}
-{#                {% if user.is_authenticated %}#}
-{#                    <li class="nav-item mx-0 mx-lg-1">#}
-{##}
-{#                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"#}
-{#                           href="{% url 'list' %}">List</a>#}
-{##}
-{#                    </li>#}
-{#                    <li class="nav-item mx-0 mx-lg-1">#}
-{#                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"#}
-{#                           href="{% url 'create_file' %}">Create New Note</a>#}
-{#                    </li>#}
-{#                    <li class="nav-item mx-0 mx-lg-1">#}
-{#                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"#}
-{#                           href="{% url 'logout' %}">Logout</a>#}
-{#                    </li>#}
-{#                {% else %}#}
-{#                    {% include "consumer/login.html" %}#}
-{#                    login here#}
-{#                {% endif %}#}
-{#            </ul>#}
-{#        </div>#}
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                           href="{% url 'consumer_create_task' %}">Create New Task</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                           href="{% url 'consumer_task_list' %}">Task List</a>
+
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                           href="{% url 'consumer_completed_task_list' %}">Completed Task</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                           href="{% url 'user_auth_logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                    {% include "user_auth/login.html" %}
+                    login here
+                {% endif %}
+            </ul>
+        </div>
     </div>
 </nav>
 
@@ -84,7 +87,7 @@
 
 {#        <img class="img-fluid mb-5 d-block mx-auto"#}
 {#             src="{% static "consumer/img/profile.png" %}" alt="">#}
-        <h2 class="text-uppercase mb-0">Hora-Service</h2>
+        <h4 class="text-uppercase mb-0">Consumer Portal</h4>
         <hr class="star-light">
 {#        <h3 class="font-weight-light mb-0">Sync notes to Google Drive</h3>#}
     </div>
