@@ -53,7 +53,7 @@ class WorkerSignUpView(View):
         data['password'] = request.POST.get('password')
         data['email'] = request.POST.get('email')
         print(data)
-        create_user(data, is_consumer=True)
+        create_user(data, is_worker=True)
         return redirect('/users/login/')
 
 class ConsumerSignUpView(View):
@@ -71,7 +71,7 @@ class ConsumerSignUpView(View):
         data['password'] = request.POST.get('password')
         data['email'] = request.POST.get('email')
         print(data)
-        create_user(data, is_worker=True)
+        create_user(data, is_consumer=True)
         return redirect('/users/login/')
 
 
