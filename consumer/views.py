@@ -24,6 +24,8 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
+
+from consumer.models import ConsumerTask
 from .helpers import create_task
 
 
@@ -53,3 +55,12 @@ class CreateTask(View):
         task = create_task(request=request, data= data)
         print(task.__dict__)
         return redirect('/consumer/task-list')
+
+class TaskList(View):
+    def get(self, request):
+        template = loader.get_template('consumer/task_list.html')
+        context = {}
+        tasks = ConsumerTask.objects.filter(user=request.user)
+        context['tasks'] = tasks
+        return HttpResponse(template.render(context, request))
+
