@@ -8,4 +8,5 @@ from django.db import models
 class User(AbstractUser):
     is_worker = models.BooleanField(default=False)
     is_consumer = models.BooleanField(default=False)
+    name = models.CharField(max_length=300, null=True, blank=True, default=None)
 
