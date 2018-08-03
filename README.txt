@@ -10,8 +10,8 @@ List of features completed:
 
         Logout
 
-        Show seperate portal according to the role (i.e., consumer, worker)
-        Only relevent service are accessible for respective role
+        Show separate portal according to the role (i.e., consumer, worker)
+        Only relevant service are accessible for respective role
 
 
     Consumer Portal:
