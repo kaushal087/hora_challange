@@ -25,7 +25,7 @@ from consumer import  urls as consumer_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/',  user_urls),
-    path('consumer/',  consumer_urls),
-    path('worker/',  worker_urls),
+    path('users/',  include('user_auth.urls')),
+    path('consumer/',  include('consumer.urls')),
+    path('worker/',  include('worker.urls')),
 ]
