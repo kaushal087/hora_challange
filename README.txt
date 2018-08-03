@@ -33,7 +33,7 @@ Language, framework and libraries used:
     Bootstrap
 
 Github Link:
-    https://github.com/kaushal087/hora_challange
+    https://github.com/kaushal087/hora_challange/tree/develop
 
 
 If you are cloning or copying code use develop branch
