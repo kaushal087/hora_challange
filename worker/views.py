@@ -31,17 +31,23 @@ from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
+from django.utils.decorators import method_decorator
 from django.views import View
 
 from consumer.models import ConsumerTask
 
 from django.http import HttpResponse
+from user_auth.helpers import worker_required
+
 
 
 def index(request):
     return HttpResponse("Hello, world. You're at the worker index.")
 
+
+@method_decorator([login_required, worker_required], name='dispatch')
 class TaskList(View):
+
     def get(self, request):
         template = loader.get_template('worker/task_list.html')
         context = {}
@@ -50,6 +56,7 @@ class TaskList(View):
             context['tasks'] = tasks
         return HttpResponse(template.render(context, request))
 
+@method_decorator([login_required, worker_required], name='dispatch')
 class TaskAccept(View):
     def get(self, request, task_id):
         task = ConsumerTask.objects.filter(Q(id=task_id) & ~Q(status=ConsumerTask.COMPLETED)).first()
@@ -58,7 +65,7 @@ class TaskAccept(View):
         task.save()
         return redirect('/worker/task-list')
 
-
+@method_decorator([login_required, worker_required], name='dispatch')
 class MyTaskList(View):
     def get(self, request):
         template = loader.get_template('worker/task_list.html')

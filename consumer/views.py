@@ -23,11 +23,12 @@ from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
+from django.utils.decorators import method_decorator
 from django.views import View
 
 from consumer.models import ConsumerTask
 from .helpers import create_task
-
+from user_auth.helpers import consumer_required
 
 
 def index(request):
@@ -35,7 +36,7 @@ def index(request):
 
 
 
-
+@method_decorator([login_required, consumer_required], name='dispatch')
 class CreateTask(View):
 
     def get(self, request):
@@ -56,6 +57,7 @@ class CreateTask(View):
         print(task.__dict__)
         return redirect('/consumer/task-list')
 
+@method_decorator([login_required, consumer_required], name='dispatch')
 class TaskList(View):
     def get(self, request):
         template = loader.get_template('consumer/task_list.html')
@@ -64,7 +66,7 @@ class TaskList(View):
         context['tasks'] = tasks
         return HttpResponse(template.render(context, request))
 
-
+@method_decorator([login_required, consumer_required], name='dispatch')
 class CompletedTaskList(View):
     def get(self, request):
         template = loader.get_template('consumer/task_list.html')
