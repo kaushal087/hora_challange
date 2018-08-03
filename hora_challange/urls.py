@@ -16,6 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+
+from django.urls import include, path
+
+from user_auth import urls as user_urls
+from worker import  urls as worker_urls
+from consumer import  urls as consumer_urls
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('users/',  user_urls),
+    path('consumer/',  consumer_urls),
+    path('worker/',  worker_urls),
 ]
