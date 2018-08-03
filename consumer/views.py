@@ -64,3 +64,12 @@ class TaskList(View):
         context['tasks'] = tasks
         return HttpResponse(template.render(context, request))
 
+
+class CompletedTaskList(View):
+    def get(self, request):
+        template = loader.get_template('consumer/task_list.html')
+        context = {}
+        tasks = ConsumerTask.objects.filter(user=request.user, status=ConsumerTask.COMPLETED)
+        context['tasks'] = tasks
+        context['status'] = 'completed'
+        return HttpResponse(template.render(context, request))
