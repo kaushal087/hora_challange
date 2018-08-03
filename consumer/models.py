@@ -35,7 +35,7 @@ class ConsumerTask(models.Model):
         (CLEAN_ROOM, CLEAN_ROOM)
     )
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='task_consumer')
     name = models.CharField(blank=True, null=True , max_length=300)
     description = models.TextField(null=True, blank=True)
     location = models.CharField(null=True, blank=True, max_length=300)
@@ -45,6 +45,8 @@ class ConsumerTask(models.Model):
                               null=True, blank=True, max_length=300)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    worker =  models.ForeignKey(User, on_delete=models.CASCADE, null=True, default=None, related_name='task_worker')
+
 
 
     class Meta:

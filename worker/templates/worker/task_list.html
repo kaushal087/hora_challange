@@ -16,7 +16,7 @@
                 task_id | name | description | created_at | status <br/>
                 {% for task in tasks %}
 {#                    <a class="lead" href="{% url 'task_detail' task_id=task.id %}">{{ task.name }}</a> <br/>#}
-                    {{task.id}}| {{ task.name }} | {{ task.description }} | {{ task.created_at |date:'Y-m-d H:i' }} | {{ task.status }}<br/>
+                    {{task.id}}| {{ task.name }} | {{ task.description }} | {{ task.created_at |date:'Y-m-d H:i' }} | {{ task.status }} <a class="lead" href="{% url 'worker_accept_task' task_id=task.id %}">Accept task</a> <br/><br/>
                 {% endfor %}
             {% else  %}
                 No tasks found

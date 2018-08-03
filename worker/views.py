@@ -45,16 +45,25 @@ class TaskList(View):
     def get(self, request):
         template = loader.get_template('worker/task_list.html')
         context = {}
-        tasks = ConsumerTask.objects.filter(~Q(status=ConsumerTask.COMPLETED))
-        context['tasks'] = tasks
+        tasks = ConsumerTask.objects.filter(Q(status=ConsumerTask.CREATED))
+        if tasks:
+            context['tasks'] = tasks
         return HttpResponse(template.render(context, request))
 
+class TaskAccept(View):
+    def get(self, request, task_id):
+        task = ConsumerTask.objects.filter(Q(id=task_id) & ~Q(status=ConsumerTask.COMPLETED)).first()
+        task.worker = request.user
+        task.status = ConsumerTask.IN_PROGRESS
+        task.save()
+        return redirect('/worker/task-list')
 
-# class CompletedTaskList(View):
-#     def get(self, request):
-#         template = loader.get_template('worker/task_list.html')
-#         context = {}
-#         tasks = ConsumerTask.objects.filter(user=request.user, status=ConsumerTask.COMPLETED)
-#         context['tasks'] = tasks
-#         context['status'] = 'completed'
-#         return HttpResponse(template.render(context, request))
+
+class MyTaskList(View):
+    def get(self, request):
+        template = loader.get_template('worker/task_list.html')
+        context = {}
+        tasks = ConsumerTask.objects.filter(user=request.user)
+        if tasks:
+            context['tasks'] = tasks
+        return HttpResponse(template.render(context, request))
