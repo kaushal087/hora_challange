@@ -42,7 +42,10 @@ from user_auth.helpers import worker_required
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the worker index.")
+    print(request)
+    template = loader.get_template('worker/home.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
 
 
 @method_decorator([login_required, worker_required], name='dispatch')

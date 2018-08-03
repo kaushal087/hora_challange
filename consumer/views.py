@@ -32,8 +32,10 @@ from user_auth.helpers import consumer_required
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the consumer index.")
-
+    print(request)
+    template = loader.get_template('consumer/home.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
 
 
 @method_decorator([login_required, consumer_required], name='dispatch')
