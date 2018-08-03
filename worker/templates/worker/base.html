@@ -51,29 +51,29 @@
             Menu
             <i class="fa fa-bars"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                {% if user.is_authenticated %}
-                    <li class="nav-item mx-0 mx-lg-1">
-
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                           href="{% url 'list' %}">List</a>
-
-                    </li>
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                           href="{% url 'create_file' %}">Create New Note</a>
-                    </li>
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                           href="{% url 'logout' %}">Logout</a>
-                    </li>
-                {% else %}
+{#        <div class="collapse navbar-collapse" id="navbarResponsive">#}
+{#            <ul class="navbar-nav ml-auto">#}
+{#                {% if user.is_authenticated %}#}
+{#                    <li class="nav-item mx-0 mx-lg-1">#}
+{##}
+{#                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"#}
+{#                           href="{% url 'list' %}">List</a>#}
+{##}
+{#                    </li>#}
+{#                    <li class="nav-item mx-0 mx-lg-1">#}
+{#                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"#}
+{#                           href="{% url 'create_file' %}">Create New Note</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item mx-0 mx-lg-1">#}
+{#                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"#}
+{#                           href="{% url 'logout' %}">Logout</a>#}
+{#                    </li>#}
+{#                {% else %}#}
 {#                    {% include "consumer/login.html" %}#}
-                    login here
-                {% endif %}
-            </ul>
-        </div>
+{#                    login here#}
+{#                {% endif %}#}
+{#            </ul>#}
+{#        </div>#}
     </div>
 </nav>
 
