@@ -1,0 +1,30 @@
+{% extends "worker/base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+
+            {% if status == 'completed' %}
+                <h2>Completed Task List</h2>
+            {% else %}
+                <h2>All Task List</h2>
+            {% endif %}
+
+            {% if tasks %}
+                task_id | name | description | created_at | status <br/>
+                {% for task in tasks %}
+{#                    <a class="lead" href="{% url 'task_detail' task_id=task.id %}">{{ task.name }}</a> <br/>#}
+                    {{task.id}}| {{ task.name }} | {{ task.description }} | {{ task.created_at |date:'Y-m-d H:i' }} | {{ task.status }}<br/>
+                {% endfor %}
+            {% else  %}
+                No tasks found
+            {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
