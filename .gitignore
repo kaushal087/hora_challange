@@ -2,3 +2,6 @@ env
 .idea
 *.pyc
 static_cdn
+db.sqlite3
+hora_challange/local_settings.py
+__pycache__
